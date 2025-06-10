@@ -8,26 +8,79 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            background: #0d1b2a;
+            color: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
         body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
-        section {
-            font-family: Arial, sans-serif;
+        .main-container {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            background: linear-gradient(135deg, #1b263b 0%, #415a77 100%);
+        }
+        .navbar {
+            background: rgba(29, 53, 87, 0.95);
+            padding: 18px 0;
+            text-align: center;
+            font-size: 2em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+        .section {
+            width: 1000px;
+            height: 400px;
+            margin: 40px auto 0 auto;
+            background: rgba(255,255,255,0.07);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 36px 32px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .section.active {
+            box-shadow: 0 8px 32px rgba(33, 203, 243, 0.18);
+            border: 2px solid #21cbf3;
+        }
+        .speaker {
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: url('background.jpg');
-            background-size: cover;
+            text-align: center;
         }
-        .timer { font-size: 3em; margin-bottom: 20px; }
-        button {
-            font-size: 1em;
-            margin: 0 5px;
-            padding: 12px 28px;
+        .timer {
+            font-size: 3.2em;
+            margin-bottom: 28px;
+            font-family: 'Consolas', monospace;
+            letter-spacing: 2px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .controls {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .controls button {
+            font-size: 1.1em;
+            width: 120px;
+            padding: 10px 32px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
@@ -37,220 +90,286 @@
             transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
             outline: none;
         }
-        #speaker { font-size: 1.2em; margin-bottom: 20px; }
+        .controls button:active {
+            transform: scale(0.97);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 18px;
+        }
+        .nav-buttons button {
+            font-size: 1em;
+            padding: 8px 28px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #415a77 0%, #21cbf3 100%);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .nav-buttons button:active {
+            transform: scale(0.97);
+        }
+        /* Special layout for dual timers */
+        .dual-timer-row {
+            display: flex;
+            width: 100%;
+            gap: 32px;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .dual-timer-col {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 0px 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 180px;
+        }
+        .dual-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+        .dual-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 120px;
+        }
+        .dual-center button {
+            margin-bottom: 12px;
+        }
+        @media (max-width: 900px) {
+            .section, .main-container {
+                padding: 0 4vw;
+            }
+            .dual-timer-row {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .dual-center {
+                min-width: unset;
+            }
+        }
     </style>
 </head>
 <body>
-    <section id="section_0" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">立论: 正一发言</div>
+    <div class="main-container">
+        <div class="navbar">辩论计时器 Debate Timer</div>
+
+        <!-- Sections -->
+        <div id="section_0" class="section active">
+            <div class="speaker">立论: 正一发言</div>
             <div id="timer_0" class="timer">00:04:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_0" onclick="startTimer(0)">Start</button>
                 <button id="pause_0" onclick="pauseTimer(0)">Pause</button>
                 <button id="reset_0" onclick="resetTimer(0)">Reset</button>
             </div>
+            <div class="nav-buttons" style="justify-content: right;">
+                <button id="next_0" onclick="next(0)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_0" onclick="next(0)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_1" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">立论: 反一发言</div>
+        <div id="section_1" class="section">
+            <div class="speaker">立论: 反一发言</div>
             <div id="timer_1" class="timer">00:04:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_1" onclick="startTimer(1)">Start</button>
                 <button id="pause_1" onclick="pauseTimer(1)">Pause</button>
                 <button id="reset_1" onclick="resetTimer(1)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_1" onclick="back(1)">Back</button>
+                <button id="next_1" onclick="next(1)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_1" onclick="next(1)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_2" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">质询 : 反二质询正一、正三、正四</div>
+        <div id="section_2" class="section">
+            <div class="speaker">质询 : 反二质询正一、正三、正四</div>
             <div id="timer_2" class="timer">00:02:30</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_2" onclick="startTimer(2)">Start</button>
                 <button id="pause_2" onclick="pauseTimer(2)">Pause</button>
                 <button id="reset_2" onclick="resetTimer(2)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_2" onclick="back(2)">Back</button>
+                <button id="next_2" onclick="next(2)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_2" onclick="next(2)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_3" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">质询 : 正二质询反一、反三、反四</div>
+        <div id="section_3" class="section">
+            <div class="speaker">质询 : 正二质询反一、反三、反四</div>
             <div id="timer_3" class="timer">00:02:30</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_3" onclick="startTimer(3)">Start</button>
                 <button id="pause_3" onclick="pauseTimer(3)">Pause</button>
                 <button id="reset_3" onclick="resetTimer(3)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_3" onclick="back(3)">Back</button>
+                <button id="next_3" onclick="next(3)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_3" onclick="next(3)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_4" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">质询小结: 反二发言</div>
+        <div id="section_4" class="section">
+            <div class="speaker">质询小结: 反二发言</div>
             <div id="timer_4" class="timer">00:02:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_4" onclick="startTimer(4)">Start</button>
                 <button id="pause_4" onclick="pauseTimer(4)">Pause</button>
                 <button id="reset_4" onclick="resetTimer(4)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_4" onclick="back(4)">Back</button>
+                <button id="next_4" onclick="next(4)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_4" onclick="next(4)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_5" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">质询小结: 正二发言</div>
+        <div id="section_5" class="section">
+            <div class="speaker">质询小结: 正二发言</div>
             <div id="timer_5" class="timer">00:02:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_5" onclick="startTimer(5)">Start</button>
                 <button id="pause_5" onclick="pauseTimer(5)">Pause</button>
                 <button id="reset_5" onclick="resetTimer(5)">Reset</button>
             </div>
-        </div>
-        <div style="height: 20vh;">
-            <button id="next_5" onclick="next(5)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
-    
-    <section id="section_6" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;">
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:2px solid rgba(255,255,255,0.2); height:100%;">
-                <div id="speaker">对辩: 正方三辩</div>
-                <div id="timer_6" class="timer">00:02:00</div>
-                <div id="controls">
-                    <button id="start_6" onclick="startTimer(6)">Start</button>
-                    <button id="pause_6" onclick="pauseTimer(6)">Pause</button>
-                    <button id="reset_6" onclick="resetTimer(6)">Reset</button>
-                </div>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
-                <div id="speaker">对辩: 反方三辩</div>
-                <div id="timer_7" class="timer">00:02:00</div>
-                <div id="controls">
-                    <button id="start_7" onclick="startTimer(7)">Start</button>
-                    <button id="pause_7" onclick="pauseTimer(7)">Pause</button>
-                    <button id="reset_7" onclick="resetTimer(7)">Reset</button>
-                </div>
+            <div class="nav-buttons">
+                <button id="back_5" onclick="back(5)">Back</button>
+                <button id="next_5" onclick="next(5)">Next</button>
             </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_6" onclick="next(6)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_7" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">小结 : 正三发言</div>
+        <!-- Dual Timer Section 1 -->
+        <div id="section_6" class="section">
+            <div class="dual-timer-row">
+                <div class="dual-timer-col">
+                    <div class="speaker">对辩: 正方三辩</div>
+                    <div id="timer_6" class="timer">00:02:00</div>
+                    <div class="controls">
+                        <button id="start_6" onclick="pauseTimer(7);startTimer(6);">Start</button>
+                        <button id="reset_6" onclick="resetTimer(6)">Reset</button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="switchs_0" onclick="switchs(0);">Switch</button>
+                    <button id="pause_7" onclick="pauseTimer(6);pauseTimer(7)">Pause</button>
+                </div>
+                <div class="dual-timer-col">
+                    <div class="speaker">对辩: 反方三辩</div>
+                    <div id="timer_7" class="timer">00:02:00</div>
+                    <div class="controls">
+                        <button id="start_7" onclick="pauseTimer(6);startTimer(7)">Start</button>
+                        <button id="reset_7" onclick="resetTimer(7)">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button id="back_6" onclick="back(6)">Back</button>
+                <button id="next_6" onclick="next(6)">Next</button>
+            </div>
+        </div>
+
+        <div id="section_7" class="section">
+            <div class="speaker">小结 : 正三发言</div>
             <div id="timer_8" class="timer">00:02:30</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_8" onclick="startTimer(8)">Start</button>
                 <button id="pause_8" onclick="pauseTimer(8)">Pause</button>
                 <button id="reset_8" onclick="resetTimer(8)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_7" onclick="back(7)">Back</button>
+                <button id="next_7" onclick="next(7)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_7" onclick="next(7)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_8" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">小结 : 反三发言</div>
+        <div id="section_8" class="section">
+            <div class="speaker">小结 : 反三发言</div>
             <div id="timer_9" class="timer">00:02:30</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_9" onclick="startTimer(9)">Start</button>
                 <button id="pause_9" onclick="pauseTimer(9)">Pause</button>
                 <button id="reset_9" onclick="resetTimer(9)">Reset</button>
             </div>
-        </div>
-        <div style="height: 20vh;">
-            <button id="next_8" onclick="next(8)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
-
-    <section id="section_9" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;">
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:2px solid rgba(255,255,255,0.2); height:100%;">
-                <div id="speaker">自由辩 : 正方</div>
-                <div id="timer_10" class="timer">00:04:00</div>
-                <div id="controls">
-                    <button id="start_10" onclick="startTimer(10)">Start</button>
-                    <button id="pause_10" onclick="pauseTimer(10)">Pause</button>
-                    <button id="reset_10" onclick="resetTimer(10)">Reset</button>
-                </div>
-            </div>
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
-                <div id="speaker">自由辩 : 反方</div>
-                <div id="timer_11" class="timer">00:04:00</div>
-                <div id="controls">
-                    <button id="start_11" onclick="startTimer(11)">Start</button>
-                    <button id="pause_11" onclick="pauseTimer(11)">Pause</button>
-                    <button id="reset_11" onclick="resetTimer(11)">Reset</button>
-                </div>
+            <div class="nav-buttons">
+                <button id="back_8" onclick="back(8)">Back</button>
+                <button id="next_8" onclick="next(8)">Next</button>
             </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_9" onclick="next(9)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_10" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">总结 : 反四发言</div>
+        <!-- Dual Timer Section 2 -->
+        <div id="section_9" class="section">
+            <div class="dual-timer-row">
+                <div class="dual-timer-col">
+                    <div class="speaker">自由辩 : 正方</div>
+                    <div id="timer_10" class="timer">00:04:00</div>
+                    <div class="controls">
+                        <button id="start_10" onclick="pauseTimer(11);startTimer(10);">Start</button>
+                        <button id="reset_10" onclick="resetTimer(10)">Reset</button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="switchs_1" onclick="switchs(1);">Switch</button>
+                    <button id="pause_10" onclick="pauseTimer(10);pauseTimer(11)">Pause</button>
+                </div>
+                <div class="dual-timer-col">
+                    <div class="speaker">自由辩 : 反方</div>
+                    <div id="timer_11" class="timer">00:04:00</div>
+                    <div class="controls">
+                        <button id="start_11" onclick="pauseTimer(10);startTimer(11);">Start</button>
+                        <button id="reset_11" onclick="resetTimer(11)">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button id="back_9" onclick="back(9)">Back</button>
+                <button id="next_9" onclick="next(9)">Next</button>
+            </div>
+        </div>
+
+        <div id="section_10" class="section">
+            <div class="speaker">总结 : 反四发言</div>
             <div id="timer_12" class="timer">00:04:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_12" onclick="startTimer(12)">Start</button>
                 <button id="pause_12" onclick="pauseTimer(12)">Pause</button>
                 <button id="reset_12" onclick="resetTimer(12)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_10" onclick="back(10)">Back</button>
+                <button id="next_10" onclick="next(10)">Next</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_10" onclick="next(10)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
 
-    <section id="section_11" style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <div style="height: 80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div id="speaker">总结 : 正四发言</div>
+        <div id="section_11" class="section">
+            <div class="speaker">总结 : 正四发言</div>
             <div id="timer_13" class="timer">00:04:00</div>
-            <div id="controls">
+            <div class="controls">
                 <button id="start_13" onclick="startTimer(13)">Start</button>
                 <button id="pause_13" onclick="pauseTimer(13)">Pause</button>
                 <button id="reset_13" onclick="resetTimer(13)">Reset</button>
             </div>
+            <div class="nav-buttons">
+                <button id="back_11" onclick="back(11)">Back</button>
+            </div>
         </div>
-        <div style="height: 20vh;">
-            <button id="next_11" onclick="next(11)" style="margin-top:30px;">Next</button>
-        </div>
-    </section>
-
+    </div>
     <script>
         let times = [
             240, 240, 150, 150, 120, 120, 120, 120, 150, 150, 240, 240, 240, 240
         ];
-
-        // Store interval IDs for each timer
+        let switchsIndexes = [
+            [6, 7], [10, 11]
+        ];
         let timerIntervals = new Array(times.length).fill(null);
-        // Track running state for each timer
         let timerRunning = new Array(times.length).fill(false);
 
         function updateTimer(index) {
@@ -282,7 +401,6 @@
         }
 
         function resetTimer(index) {
-            // Reset to initial value
             const initialTimes = [
                 240, 240, 150, 150, 120, 120, 120, 120, 150, 150, 240, 240, 240, 240
             ];
@@ -292,16 +410,47 @@
             updateTimer(index);
         }
 
-        function next(index) {
-            const nextSection = document.getElementById('section_' + (index + 1));
-            nextSection.scrollIntoView({ behavior: 'smooth' });
+        function switchs(index) {
+            if (timerRunning[switchsIndexes[index][0]]) {
+                pauseTimer(switchsIndexes[index][0]);
+                startTimer(switchsIndexes[index][1]);
+            } else {
+                pauseTimer(switchsIndexes[index][1]);
+                startTimer(switchsIndexes[index][0]);
+            }
         }
 
-        // Initialize all timers on page load
+        function showSection(index) {
+            for (let i = 0; i <= 11; i++) {
+                const section = document.getElementById('section_' + i);
+                if (section) {
+                    section.classList.remove('active');
+                    section.style.display = (i === index) ? 'block' : 'none';
+                }
+            }
+        }
+
+        function back(index) {
+            if (index > 0) {
+                showSection(index - 1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function next(index) {
+            if (index < 11) {
+                showSection(index + 1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize all timers and sections on page load
         window.onload = function() {
             for (let i = 0; i < times.length; i++) {
                 updateTimer(i);
             }
+            // Only show the first section
+            showSection(0);
         };
     </script>
 </body>
