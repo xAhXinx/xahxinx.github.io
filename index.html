@@ -33,9 +33,9 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
         .section {
-            width: 1000px;
-            height: 400px;
-            margin: 40px auto 0 auto;
+            width: 800px;
+            height: 300px;
+            margin: auto;
             background: rgba(255,255,255,0.07);
             border-radius: 18px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -131,19 +131,25 @@
             min-width: 180px;
         }
         .dual-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 0;
-        }
-        .dual-center {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            gap: 16px;
+            padding-bottom: 20px;
             justify-content: center;
-            align-items: center;
-            min-width: 120px;
+            align-items: normal;
         }
-        .dual-center button {
-            margin-bottom: 12px;
+        .dual-controls button {
+            font-size: 1.1em;
+            width: 120px;
+            padding: 10px 32px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(33, 203, 243, 0.15);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            outline: none;
         }
         @media (max-width: 900px) {
             .section, .main-container {
@@ -258,7 +264,7 @@
                         <button id="reset_6" onclick="resetTimer(6)">Reset</button>
                     </div>
                 </div>
-                <div class="controls">
+                <div class="dual-controls">
                     <button id="switchs_0" onclick="switchs(0);">Switch</button>
                     <button id="pause_7" onclick="pauseTimer(6);pauseTimer(7)">Pause</button>
                 </div>
@@ -316,7 +322,7 @@
                         <button id="reset_10" onclick="resetTimer(10)">Reset</button>
                     </div>
                 </div>
-                <div class="controls">
+                <div class="dual-controls">
                     <button id="switchs_1" onclick="switchs(1);">Switch</button>
                     <button id="pause_10" onclick="pauseTimer(10);pauseTimer(11)">Pause</button>
                 </div>
