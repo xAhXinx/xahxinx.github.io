@@ -52,7 +52,7 @@
         }
         .speaker {
             height: 30%;
-            font-size: 4em;
+            font-size: 10vh;
             font-weight: 500;
             letter-spacing: 1px;
             display: flex;
@@ -62,7 +62,7 @@
         }
         .timer {
             height: 40%;
-            font-size: 8em;
+            font-size: 20vh;
             font-family: 'Consolas', monospace;
             letter-spacing: 2px;
             text-align: center;
@@ -383,6 +383,7 @@
         ];
         let timerIntervals = new Array(times.length).fill(null);
         let timerRunning = new Array(times.length).fill(false);
+        let currentPage = 0;
 
         function playRing1() {
             const audio = document.getElementById('ring_1');
@@ -483,6 +484,14 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space' || event.key === ' ') {
+                // Your code here, e.g. start or pause the timer
+                alert('Space bar pressed!');
+                // Example: startTimer(0);
+            }
+        });
 
         // Initialize all timers and sections on page load
         window.onload = function() {
