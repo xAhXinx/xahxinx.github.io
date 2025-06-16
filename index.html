@@ -51,7 +51,7 @@
             border: 2px solid #21cbf3;
         }
         .speaker {
-            height: 20%;
+            height: 30%;
             font-size: 4em;
             font-weight: 500;
             letter-spacing: 1px;
@@ -97,10 +97,11 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: 18px;
+            height: 10%;
         }
         .nav-buttons button {
             font-size: 1em;
+            margin: 10px;
             padding: 8px 28px;
             border-radius: 6px;
             background: linear-gradient(90deg, #415a77 0%, #21cbf3 100%);
@@ -116,6 +117,7 @@
         .dual-timer-row {
             display: flex;
             width: 100%;
+            height: 70%;
             gap: 32px;
             justify-content: center;
             align-items: stretch;
@@ -131,17 +133,17 @@
             min-width: 180px;
         }
         .dual-controls {
-            display: grid;
+            display: flex;
+            height: 20%;
             gap: 16px;
-            padding-bottom: 20px;
             justify-content: center;
-            align-items: normal;
+            align-items: end;
         }
         .dual-controls button {
             font-size: 1.1em;
             width: 120px;
+            height: min-content;
             padding: 10px 32px;
-            margin-top: 20px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
@@ -264,10 +266,7 @@
                         <button id="reset_6" onclick="resetTimer(6)">Reset</button>
                     </div>
                 </div>
-                <div class="dual-controls">
-                    <button id="switchs_0" onclick="switchs(0);">Switch</button>
-                    <button id="pause_7" onclick="pauseTimer(6);pauseTimer(7)">Pause</button>
-                </div>
+
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 反方三辩</div>
                     <div id="timer_7" class="timer">02:00</div>
@@ -276,6 +275,10 @@
                         <button id="reset_7" onclick="resetTimer(7)">Reset</button>
                     </div>
                 </div>
+            </div>
+            <div class="controls">
+                <button id="switchs_0" onclick="switchs(0);">Switch</button>
+                <button id="pause_7" onclick="pauseTimer(6);pauseTimer(7)">Pause</button>
             </div>
             <div class="nav-buttons">
                 <button id="back_6" onclick="back(6)">Back</button>
@@ -322,10 +325,6 @@
                         <button id="reset_10" onclick="resetTimer(10)">Reset</button>
                     </div>
                 </div>
-                <div class="dual-controls">
-                    <button id="switchs_1" onclick="switchs(1);">Switch</button>
-                    <button id="pause_10" onclick="pauseTimer(10);pauseTimer(11)">Pause</button>
-                </div>
                 <div class="dual-timer-col">
                     <div class="speaker">自由辩 : 反方</div>
                     <div id="timer_11" class="timer">04:00</div>
@@ -334,6 +333,10 @@
                         <button id="reset_11" onclick="resetTimer(11)">Reset</button>
                     </div>
                 </div>
+            </div>
+            <div class="controls">
+                <button id="switchs_1" onclick="switchs(1);">Switch</button>
+                <button id="pause_10" onclick="pauseTimer(10);pauseTimer(11)">Pause</button>
             </div>
             <div class="nav-buttons">
                 <button id="back_9" onclick="back(9)">Back</button>
