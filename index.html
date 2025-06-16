@@ -34,8 +34,8 @@
             display: none;
         }
         .section {
-            width: 800px;
-            height: 300px;
+            width: 80vw;
+            height: 80vh;
             margin: auto;
             background: rgba(255,255,255,0.07);
             border-radius: 18px;
@@ -51,9 +51,8 @@
             border: 2px solid #21cbf3;
         }
         .speaker {
-            font-size: 1.3em;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            height: 20%;
+            font-size: 4em;
             font-weight: 500;
             letter-spacing: 1px;
             display: flex;
@@ -62,8 +61,8 @@
             text-align: center;
         }
         .timer {
-            font-size: 3.2em;
-            margin-bottom: 28px;
+            height: 40%;
+            font-size: 8em;
             font-family: 'Consolas', monospace;
             letter-spacing: 2px;
             text-align: center;
@@ -72,9 +71,9 @@
             align-items: center;
         }
         .controls {
+            height: 20%;
             display: flex;
-            gap: 16px;
-            padding-bottom: 20px;
+            gap: 20px;
             justify-content: center;
             align-items: center;
         }
@@ -173,7 +172,7 @@
         <!-- Sections -->
         <div id="section_0" class="section active">
             <div class="speaker">立论: 正一发言</div>
-            <div id="timer_0" class="timer">00:04:00</div>
+            <div id="timer_0" class="timer">04:00</div>
             <div class="controls">
                 <button id="start_0" onclick="startTimer(0)">Start</button>
                 <button id="pause_0" onclick="pauseTimer(0)">Pause</button>
@@ -186,7 +185,7 @@
 
         <div id="section_1" class="section">
             <div class="speaker">立论: 反一发言</div>
-            <div id="timer_1" class="timer">00:04:00</div>
+            <div id="timer_1" class="timer">04:00</div>
             <div class="controls">
                 <button id="start_1" onclick="startTimer(1)">Start</button>
                 <button id="pause_1" onclick="pauseTimer(1)">Pause</button>
@@ -200,7 +199,7 @@
 
         <div id="section_2" class="section">
             <div class="speaker">质询 : 反二质询正一、正三、正四</div>
-            <div id="timer_2" class="timer">00:02:30</div>
+            <div id="timer_2" class="timer">02:30</div>
             <div class="controls">
                 <button id="start_2" onclick="startTimer(2)">Start</button>
                 <button id="pause_2" onclick="pauseTimer(2)">Pause</button>
@@ -214,7 +213,7 @@
 
         <div id="section_3" class="section">
             <div class="speaker">质询 : 正二质询反一、反三、反四</div>
-            <div id="timer_3" class="timer">00:02:30</div>
+            <div id="timer_3" class="timer">02:30</div>
             <div class="controls">
                 <button id="start_3" onclick="startTimer(3)">Start</button>
                 <button id="pause_3" onclick="pauseTimer(3)">Pause</button>
@@ -228,7 +227,7 @@
 
         <div id="section_4" class="section">
             <div class="speaker">质询小结: 反二发言</div>
-            <div id="timer_4" class="timer">00:02:00</div>
+            <div id="timer_4" class="timer">02:00</div>
             <div class="controls">
                 <button id="start_4" onclick="startTimer(4)">Start</button>
                 <button id="pause_4" onclick="pauseTimer(4)">Pause</button>
@@ -242,7 +241,7 @@
 
         <div id="section_5" class="section">
             <div class="speaker">质询小结: 正二发言</div>
-            <div id="timer_5" class="timer">00:02:00</div>
+            <div id="timer_5" class="timer">02:00</div>
             <div class="controls">
                 <button id="start_5" onclick="startTimer(5)">Start</button>
                 <button id="pause_5" onclick="pauseTimer(5)">Pause</button>
@@ -259,7 +258,7 @@
             <div class="dual-timer-row">
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 正方三辩</div>
-                    <div id="timer_6" class="timer">00:02:00</div>
+                    <div id="timer_6" class="timer">02:00</div>
                     <div class="controls">
                         <button id="start_6" onclick="pauseTimer(7);startTimer(6);">Start</button>
                         <button id="reset_6" onclick="resetTimer(6)">Reset</button>
@@ -271,7 +270,7 @@
                 </div>
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 反方三辩</div>
-                    <div id="timer_7" class="timer">00:02:00</div>
+                    <div id="timer_7" class="timer">02:00</div>
                     <div class="controls">
                         <button id="start_7" onclick="pauseTimer(6);startTimer(7)">Start</button>
                         <button id="reset_7" onclick="resetTimer(7)">Reset</button>
@@ -286,7 +285,7 @@
 
         <div id="section_7" class="section">
             <div class="speaker">小结 : 正三发言</div>
-            <div id="timer_8" class="timer">00:02:30</div>
+            <div id="timer_8" class="timer">02:30</div>
             <div class="controls">
                 <button id="start_8" onclick="startTimer(8)">Start</button>
                 <button id="pause_8" onclick="pauseTimer(8)">Pause</button>
@@ -300,7 +299,7 @@
 
         <div id="section_8" class="section">
             <div class="speaker">小结 : 反三发言</div>
-            <div id="timer_9" class="timer">00:02:30</div>
+            <div id="timer_9" class="timer">02:30</div>
             <div class="controls">
                 <button id="start_9" onclick="startTimer(9)">Start</button>
                 <button id="pause_9" onclick="pauseTimer(9)">Pause</button>
@@ -317,7 +316,7 @@
             <div class="dual-timer-row">
                 <div class="dual-timer-col">
                     <div class="speaker">自由辩 : 正方</div>
-                    <div id="timer_10" class="timer">00:04:00</div>
+                    <div id="timer_10" class="timer">04:00</div>
                     <div class="controls">
                         <button id="start_10" onclick="pauseTimer(11);startTimer(10);">Start</button>
                         <button id="reset_10" onclick="resetTimer(10)">Reset</button>
@@ -329,7 +328,7 @@
                 </div>
                 <div class="dual-timer-col">
                     <div class="speaker">自由辩 : 反方</div>
-                    <div id="timer_11" class="timer">00:04:00</div>
+                    <div id="timer_11" class="timer">04:00</div>
                     <div class="controls">
                         <button id="start_11" onclick="pauseTimer(10);startTimer(11);">Start</button>
                         <button id="reset_11" onclick="resetTimer(11)">Reset</button>
@@ -344,7 +343,7 @@
 
         <div id="section_10" class="section">
             <div class="speaker">总结 : 反四发言</div>
-            <div id="timer_12" class="timer">00:04:00</div>
+            <div id="timer_12" class="timer">04:00</div>
             <div class="controls">
                 <button id="start_12" onclick="startTimer(12)">Start</button>
                 <button id="pause_12" onclick="pauseTimer(12)">Pause</button>
@@ -358,7 +357,7 @@
 
         <div id="section_11" class="section">
             <div class="speaker">总结 : 正四发言</div>
-            <div id="timer_13" class="timer">00:04:00</div>
+            <div id="timer_13" class="timer">04:00</div>
             <div class="controls">
                 <button id="start_13" onclick="startTimer(13)">Start</button>
                 <button id="pause_13" onclick="pauseTimer(13)">Pause</button>
@@ -368,6 +367,9 @@
                 <button id="back_11" onclick="back(11)">Back</button>
             </div>
         </div>
+
+        <audio id="ring_1" src="ring_1.mp3"></audio>
+        <audio id="ring_2" src="ring_2.mp3"></audio>
     </div>
     <script>
         let times = [
@@ -379,10 +381,38 @@
         let timerIntervals = new Array(times.length).fill(null);
         let timerRunning = new Array(times.length).fill(false);
 
+        function playRing1() {
+            const audio = document.getElementById('ring_1');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        }
+
+        function playRing2() {
+            const audio = document.getElementById('ring_2');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        }
+
         function updateTimer(index) {
             const minutes = String(Math.floor(times[index] / 60)).padStart(2, '0');
             const seconds = String(times[index] % 60).padStart(2, '0');
-            document.getElementById('timer_' + index).textContent = `00:${minutes}:${seconds}`;
+            const timerElem = document.getElementById('timer_' + index);
+            timerElem.textContent = `${minutes}:${seconds}`;
+            if (times[index] == 30) {
+                playRing1();
+            } else if (times[index] == 0) {
+                playRing2();
+            }
+
+            if (times[index] <= 30) {
+                timerElem.style.color = 'red';
+            } else {
+                timerElem.style.color = '';
+            }
         }
 
         function startTimer(index) {
