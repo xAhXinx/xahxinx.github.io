@@ -393,27 +393,41 @@
         </div>
 
         <div id="section_12" class="section">
-            <div class="speaker">评审点评环节</div>
+            <div class="speaker">缓冲时间</div>
             <div id="timer_12_0" class="timer">00:00</div>
             <div class="controls">
                 <button id="start_12_0" onclick="startTimer([12, 0])">开始</button>
                 <button id="pause_12_0" onclick="pauseTimer([12, 0])">暂停</button>
                 <button id="reset_12_0" onclick="resetTimer([12, 0])">重置</button>
-                <button id="add_12_0" onclick="addTimer([12, 0])">加时</button>
             </div>
             <div class="nav-buttons">
                 <button id="back_12" onclick="back()">←</button>
+                <button id="next_12" onclick="next()">→</button>
             </div>
         </div>
 
         <div id="section_13" class="section">
-            <div class="speaker">教练指导环节</div>
+            <div class="speaker">评审点评环节</div>
             <div id="timer_13_0" class="timer">00:00</div>
             <div class="controls">
                 <button id="start_13_0" onclick="startTimer([13, 0])">开始</button>
                 <button id="pause_13_0" onclick="pauseTimer([13, 0])">暂停</button>
                 <button id="reset_13_0" onclick="resetTimer([13, 0])">重置</button>
                 <button id="add_13_0" onclick="addTimer([13, 0])">加时</button>
+            </div>
+            <div class="nav-buttons">
+                <button id="back_13" onclick="back()">←</button>
+            </div>
+        </div>
+
+        <div id="section_14" class="section">
+            <div class="speaker">教练指导环节</div>
+            <div id="timer_14_0" class="timer">00:00</div>
+            <div class="controls">
+                <button id="start_14_0" onclick="startTimer([14, 0])">开始</button>
+                <button id="pause_14_0" onclick="pauseTimer([14, 0])">暂停</button>
+                <button id="reset_14_0" onclick="resetTimer([14, 0])">重置</button>
+                <button id="add_14_0" onclick="addTimer([14, 0])">加时</button>
             </div>
             <div class="nav-buttons">
                 <button id="exit" onclick="exit()">退出</button>
@@ -437,6 +451,7 @@
             [240, 240],
             [240],
             [240],
+            [300],
             [1800],
             [60]
         ];
@@ -454,6 +469,7 @@
             [null],
             [null],
             [null],
+            [null],
             [null]
         ];
         let timerRunning = [
@@ -467,6 +483,7 @@
             [false],
             [false],
             [false, false],
+            [false],
             [false],
             [false],
             [false],
@@ -490,7 +507,8 @@
             [10, 0],
             [11, 0],
             [12, 0],
-            [13, 0]
+            [13, 0],
+            [14, 0]
         ];
         let currentPageIndex = 0;
         let lastPageIndex = 0;
@@ -565,6 +583,7 @@
                 [240, 240],
                 [240],
                 [240],
+                [300],
                 [1800],
                 [60]
             ];
@@ -590,7 +609,7 @@
         }
 
         function showSection(index) {
-            for (let i = 0; i <= 13; i++) {
+            for (let i = 0; i <= 14; i++) {
                 const section = document.getElementById('section_' + i);
                 if (section) {
                     section.classList.remove('active');
@@ -608,7 +627,7 @@
         }
 
         function next() {
-            if (currentPageIndex < 12) {
+            if (currentPageIndex < 13) {
                 currentPageIndex++;
                 showSection(currentPageIndex);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -650,22 +669,22 @@
                     resetTimer(keydownIndexes[currentPageIndex]);
                 }
             } else if (event.key === 'c' || event.key === 'C') {
-                if (currentPageIndex != 13) {
+                if (currentPageIndex != 14) {
                     lastPageIndex = currentPageIndex;
                 }
-                currentPageIndex = 13;
+                currentPageIndex = 14;
                 showSection(currentPageIndex);
             } else if (event.key === 'ArrowRight') {
                 next();
             } else if (event.key === 'ArrowLeft') {
                 back();
-            } else if (currentPageIndex == 13 && event.key === 'Escape') {
+            } else if (currentPageIndex == 14 && event.key === 'Escape') {
                 exit();
             }
         });
 
         document.addEventListener('keyup', function(event) {
-            if ((currentPageIndex == 12 || currentPageIndex == 13) && event.shiftKey && event.key === "+") {
+            if ((currentPageIndex == 13 || currentPageIndex == 14) && event.shiftKey && event.key === "+") {
                 addTimer([currentPageIndex, 0]);
             }
         });
@@ -688,7 +707,8 @@
                 [10, 0],
                 [11, 0],
                 [12, 0],
-                [13, 0]
+                [13, 0],
+                [14, 0]
             ];
             indexes.forEach(i => {
                 updateTimer(i);
