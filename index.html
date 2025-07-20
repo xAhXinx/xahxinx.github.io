@@ -538,6 +538,11 @@
                 playRing1();
             } else if (times[index[0]][index[1]] == 0) {
                 playRing2();
+                if (index[0] == 6) {
+                    startTimer([6, index[1] == 0 ? 1 : 0]);
+                } else if (index[0] == 9) {
+                    startTimer([9, index[1] == 0 ? 1 : 0]);
+                }
             }
 
             if (times[index[0]][index[1]] <= 30) {
@@ -594,13 +599,24 @@
         }
 
         function switchs(index) {
-            if (timerRunning[switchIndexes[index][0][0]][switchIndexes[index][0][1]]) {
-                pauseTimer(switchIndexes[index][0]);
-                startTimer(switchIndexes[index][1]);
+            if (times[switchIndexes[index][0][0]][switchIndexes[index][0][1]] > 0) {
+                if (timerRunning[switchIndexes[index][0][0]][switchIndexes[index][0][1]]) {
+                    pauseTimer(switchIndexes[index][0]);
+                    startTimer(switchIndexes[index][1]);
+                } else {
+                    pauseTimer(switchIndexes[index][1]);
+                    startTimer(switchIndexes[index][0]);
+                }
             } else {
-                pauseTimer(switchIndexes[index][1]);
-                startTimer(switchIndexes[index][0]);
+                if (timerRunning[switchIndexes[index][1][0]][switchIndexes[index][1][1]]) {
+                    pauseTimer(switchIndexes[index][1]);
+                    startTimer(switchIndexes[index][0]);
+                } else {
+                    pauseTimer(switchIndexes[index][0]);
+                    startTimer(switchIndexes[index][1]);
+                }
             }
+
         }
 
         function addTimer(index) {
