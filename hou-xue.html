@@ -28,7 +28,7 @@
             background: rgba(0, 0, 0, 0.95);
             padding: 18px 0;
             text-align: center;
-            font-size: 2em;
+            font-size: 1.1em;
             letter-spacing: 2px;
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(255,0,0,0.12);
@@ -55,7 +55,7 @@
         }
         .speaker {
             font-family: 'Ma Shan Zheng', 'FZKai-Z03', 'KaiTi', 'STKaiti', 'Noto Serif SC', serif;
-            height: 30%;
+            height: 15%;
             font-size: 7vh;
             font-weight: 500;
             letter-spacing: 1px;
@@ -66,7 +66,7 @@
             color: #fff;
         }
         .timer {
-            height: 40%;
+            height: 55%;
             font-size: 16vh;
             font-family: 'Consolas', monospace;
             letter-spacing: 2px;
@@ -92,6 +92,7 @@
             font-family: 'Ma Shan Zheng', 'FZKai-Z03', 'KaiTi', 'STKaiti', 'Noto Serif SC', serif;
             font-size: 1.1em;
             width: 120px;
+            height: min-content;
             padding: 10px 32px;
             border: none;
             border-radius: 8px;
@@ -112,24 +113,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            height: 10%;
-        }
-        .nav-buttons button {
-            font-family: 'Ma Shan Zheng', 'FZKai-Z03', 'KaiTi', 'STKaiti', 'Noto Serif SC', serif;
-            font-size: 1em;
-            margin: 10px;
-            padding: 8px 28px;
-            border-radius: 6px;
-            background: linear-gradient(90deg, #222 0%, #ff2222 100%);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            font-weight: bold;
-        }
-        .nav-buttons button:active {
-            transform: scale(0.97);
-            background: linear-gradient(90deg, #ff2222 0%, #222 100%);
+            height: 15%;
         }
         /* Special layout for dual timers */
         .dual-timer-row {
@@ -145,7 +129,7 @@
             background: rgba(30,30,30,0.95);
             border-radius: 12px;
             padding: 0px 0px;
-            display: flex;
+            display: grid;
             flex-direction: column;
             align-items: center;
             min-width: 180px;
@@ -193,34 +177,45 @@
 
         <!-- Sections -->
         <div id="section_0" class="section active">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：正方一辩</div>
             <div id="timer_0_0" class="timer"></div>
-            <div class="controls">
-                <button id="start_0_0" onclick="startTimer([0, 0])">开始</button>
-                <button id="pause_0_0" onclick="pauseTimer([0, 0])">暂停</button>
-                <button id="reset_0_0" onclick="resetTimer([0, 0])">重置</button>
-            </div>
-            <div class="nav-buttons" style="justify-content: right;">
-                <button id="next_0" onclick="next([0, 0])">→</button>
+            <div class="nav-buttons">
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                </div>
+                <div class="controls">
+                    <button id="start_0_0" onclick="startTimer([0, 0])">开始</button>
+                    <button id="pause_0_0" onclick="pauseTimer([0, 0])">暂停</button>
+                    <button id="reset_0_0" onclick="resetTimer([0, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_0" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_1" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：反方一辩</div>
             <div id="timer_1_0" class="timer"></div>
-            <div class="controls">
-                <button id="start_1_0" onclick="startTimer([1, 0])">开始</button>
-                <button id="pause_1_0" onclick="pauseTimer([1, 0])">暂停</button>
-                <button id="reset_1_0" onclick="resetTimer([1, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_1" onclick="back()">←</button>
-                <button id="next_1" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_1" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_1_0" onclick="startTimer([1, 0])">开始</button>
+                    <button id="pause_1_0" onclick="pauseTimer([1, 0])">暂停</button>
+                    <button id="reset_1_0" onclick="resetTimer([1, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_1" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <!-- Dual Timer Section 1 -->
         <div id="section_2" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="dual-timer-row">
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 正方三辩</div>
@@ -240,46 +235,61 @@
                     </div>
                 </div>
             </div>
-            <div class="controls">
-                <button id="switchs_0" onclick="switchs(0);">切换</button>
-                <button id="pause_2" onclick="pauseTimer([2, 0]);pauseTimer([2, 1])">暂停</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_2" onclick="back()">←</button>
-                <button id="next_2" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_2" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="switchs_0" onclick="switchs(0);">切换</button>
+                    <button id="pause_2" onclick="pauseTimer([2, 0]);pauseTimer([2, 1])">暂停</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_2" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_3" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：正方二辩</div>
             <div id="timer_3_0" class="timer"></div>
-            <div class="controls">
-                <button id="start_3_0" onclick="startTimer([3, 0])">开始</button>
-                <button id="pause_3_0" onclick="pauseTimer([3, 0])">暂停</button>
-                <button id="reset_3_0" onclick="resetTimer([3, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_3" onclick="back()">←</button>
-                <button id="next_3" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_3" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_3_0" onclick="startTimer([3, 0])">开始</button>
+                    <button id="pause_3_0" onclick="pauseTimer([3, 0])">暂停</button>
+                    <button id="reset_3_0" onclick="resetTimer([3, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_3" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_4" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：反方二辩</div>
             <div id="timer_4_0" class="timer"></div>
-            <div class="controls">
-                <button id="start_4_0" onclick="startTimer([4, 0])">开始</button>
-                <button id="pause_4_0" onclick="pauseTimer([4, 0])">暂停</button>
-                <button id="reset_4_0" onclick="resetTimer([4, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_4" onclick="back()">←</button>
-                <button id="next_4" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_4" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_4_0" onclick="startTimer([4, 0])">开始</button>
+                    <button id="pause_4_0" onclick="pauseTimer([4, 0])">暂停</button>
+                    <button id="reset_4_0" onclick="resetTimer([4, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_4" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <!-- Dual Timer Section 2 -->
         <div id="section_5" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="dual-timer-row">
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 正方一辩</div>
@@ -298,46 +308,61 @@
                     </div>
                 </div>
             </div>
-            <div class="controls">
-                <button id="switchs_1" onclick="switchs(1);">切换</button>
-                <button id="pause_5" onclick="pauseTimer([5, 0]);pauseTimer([5, 1])">暂停</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_5" onclick="back()">←</button>
-                <button id="next_5" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_5" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="switchs_1" onclick="switchs(1);">切换</button>
+                    <button id="pause_5" onclick="pauseTimer([5, 0]);pauseTimer([5, 1])">暂停</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_5" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_6" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：正方三辩</div>
             <div id="timer_6_0" class="timer">04:00</div>
-            <div class="controls">
-                <button id="start_6_0" onclick="startTimer([6, 0])">开始</button>
-                <button id="pause_6_0" onclick="pauseTimer([6, 0])">暂停</button>
-                <button id="reset_6_0" onclick="resetTimer([6, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_6" onclick="back()">←</button>
-                <button id="next_6" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_6" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_6_0" onclick="startTimer([6, 0])">开始</button>
+                    <button id="pause_6_0" onclick="pauseTimer([6, 0])">暂停</button>
+                    <button id="reset_6_0" onclick="resetTimer([6, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_6" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_7" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">申论：反方三辩</div>
             <div id="timer_7_0" class="timer">04:00</div>
-            <div class="controls">
-                <button id="start_7_0" onclick="startTimer([7, 0])">开始</button>
-                <button id="pause_7_0" onclick="pauseTimer([7, 0])">暂停</button>
-                <button id="reset_7_0" onclick="resetTimer([7, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_7" onclick="back()">←</button>
-                <button id="next_7" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_7" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_7_0" onclick="startTimer([7, 0])">开始</button>
+                    <button id="pause_7_0" onclick="pauseTimer([7, 0])">暂停</button>
+                    <button id="reset_7_0" onclick="resetTimer([7, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_7" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <!-- Dual Timer Section 3 -->
         <div id="section_8" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="dual-timer-row">
                 <div class="dual-timer-col">
                     <div class="speaker">对辩: 正方二辩</div>
@@ -356,54 +381,74 @@
                     </div>
                 </div>
             </div>
-            <div class="controls">
-                <button id="switchs_2" onclick="switchs(2);">切换</button>
-                <button id="pause_8" onclick="pauseTimer([8, 0]);pauseTimer([8, 1])">暂停</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_8" onclick="back()">←</button>
-                <button id="next_8" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_8" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="switchs_2" onclick="switchs(2);">切换</button>
+                    <button id="pause_8" onclick="pauseTimer([8, 0]);pauseTimer([8, 1])">暂停</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_8" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_9" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">中场休息</div>
             <div id="timer_9_0" class="timer"></div>
-            <div class="controls">
-                <button id="start_9_0" onclick="startTimer([9, 0])">开始</button>
-                <button id="pause_9_0" onclick="pauseTimer([9, 0])">暂停</button>
-                <button id="reset_9_0" onclick="resetTimer([9, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_9" onclick="back()">←</button>
-                <button id="next_9" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_9" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_9_0" onclick="startTimer([9, 0])">开始</button>
+                    <button id="pause_9_0" onclick="pauseTimer([9, 0])">暂停</button>
+                    <button id="reset_9_0" onclick="resetTimer([9, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_9" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_10" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">总结：正方一辩</div>
             <div id="timer_10_0" class="timer">04:00</div>
-            <div class="controls">
-                <button id="start_10_0" onclick="startTimer([10, 0])">开始</button>
-                <button id="pause_10_0" onclick="pauseTimer([10, 0])">暂停</button>
-                <button id="reset_10_0" onclick="resetTimer([10, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_10" onclick="back()">←</button>
-                <button id="next_10" onclick="next()">→</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_10" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_10_0" onclick="startTimer([10, 0])">开始</button>
+                    <button id="pause_10_0" onclick="pauseTimer([10, 0])">暂停</button>
+                    <button id="reset_10_0" onclick="resetTimer([10, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_10" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
         <div id="section_11" class="section">
+            <div class="speaker">《价值型辩题/政策型辩题是更好的辩论入门题型》</div>
             <div class="speaker">总结：反方一辩</div>
             <div id="timer_11_0" class="timer">04:00</div>
-            <div class="controls">
-                <button id="start_11_0" onclick="startTimer([11, 0])">开始</button>
-                <button id="pause_11_0" onclick="pauseTimer([11, 0])">暂停</button>
-                <button id="reset_11_0" onclick="resetTimer([11, 0])">重置</button>
-            </div>
             <div class="nav-buttons">
-                <button id="back_11" onclick="back()">←</button>
+                <div class="controls" style="justify-content: left; min-width: 140px;">
+                    <button id="back_11" onclick="back()">←</button>
+                </div>
+                <div class="controls">
+                    <button id="start_11_0" onclick="startTimer([11, 0])">开始</button>
+                    <button id="pause_11_0" onclick="pauseTimer([11, 0])">暂停</button>
+                    <button id="reset_11_0" onclick="resetTimer([11, 0])">重置</button>
+                </div>
+                <div class="controls" style="justify-content: right; min-width: 140px;">
+                    <button id="next_11" onclick="next()">→</button>
+                </div>
             </div>
         </div>
 
